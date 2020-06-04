@@ -1,38 +1,42 @@
-{% macro displayMovieList(movie_list) %} {% for movie in movie_list %}
+<head>
+    <link rel="shortcut icon" type="image/png" href="https://www.freepngimg.com/download/clapperboard/2-2-clapperboard-png.png" />
 
-<style>
-    a {
-        color: green;
-    }
-    
-    body {
-        background-color: black;
-    }
-</style>
+</head>
 
-<div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
-    <a href="/movie/{{movie.id}}">
-        <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
-        <li class="text-center">
-            {{ movie.title|truncate(10)}}</a>
-    </li>
-</div>
-
-{% endfor %} {% endmacro %}
-
-<!-- Displaying reviews macro -->
-{% macro displayReviews(review_list) %} {% for review in review_list %}
-
-<div class="row">
-
-    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
-        <h4>Author</h4>
-        <p>{{review.user.username}}</p>
+<body>
+    {% macro displayMovieList(movie_list) %} {% for movie in movie_list %}
+    <style>
+        a {
+            color: green;
+        }
+        
+        body {
+            background-color: black;
+        }
+    </style>
+    <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
+        <a href="/movie/{{movie.id}}">
+            <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
+            <li class="text-center">
+                {{ movie.title|truncate(10)}}</a>
+        </li>
     </div>
-    <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
-        <h2> <a href="{{url_for('main.single_review',id=review.id)}}">{{review.movie_title}}</a> </h2>
-        <!--h2> {{ review.movie_title}} </h2>
-    <p> {{ review.movie_review | truncate(30) }}</p-->
+
+    {% endfor %} {% endmacro %}
+
+    <!-- Displaying reviews macro -->
+    {% macro displayReviews(review_list) %} {% for review in review_list %}
+
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card" style="background-color: white; color: black; border-radius: 10px; margin-left: 2%;">
+            <h4>Author</h4>
+            <p>{{review.user.username}}</p>
+        </div>
+        <div class="col-xs-10 col-sm-10 col-md-8 col-lg-8">
+            <h2> <a href="{{url_for('main.single_review',id=review.id)}}">{{review.movie_title}}</a> </h2>
+            <h2> {{ review.movie_title}} </h2>
+            <p> {{ review.movie_review | truncate(30) }}</p>
+        </div>
     </div>
-</div>
-{% endfor %} {% endmacro %}
+    {% endfor %} {% endmacro %}

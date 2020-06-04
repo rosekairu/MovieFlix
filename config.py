@@ -23,8 +23,8 @@ class Config:
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
     
-    #SUBJECT_PREFIX = 'watchlist'
-    #SENDER_EMAIL = 'moringawatchlist@gmail.com'
+    SUBJECT_PREFIX = 'watchlist'
+    SENDER_EMAIL = 'moringawatchlist@gmail.com'
 
     # simple mde  configurations
     SIMPLEMDE_JS_IIFE = True
