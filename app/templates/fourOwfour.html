@@ -1,9 +1,26 @@
 {% extends 'base.html'%} {% block content %}
-<h1>WHOOOPS we can't find that page</h1>
-<a href="{{ url_for('index') }}">
-    <p>Click Here
-</a>To go to the Home Page</p>
 
-<!-- {{ url_for('index') }} is a var which returns url of home.html-->
+<style>
+    .container {
+        background-color: aqua;
+        opacity: 0.9;
+        border-radius: 20px;
+        padding: 15%;
+        text-align: center;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+</style>
+<a href="/" style="text-decoration: none;">
+    <div class="container">
 
-{% endblock %}
+        <h1>WHOOOPS we can't find that page</h1>
+        <a href="{{ url_for('main.index') }}">
+            <p>Click Here
+        </a>To go to the Home Page</p>
+
+        <!-- {{ url_for('main.index') }} is a var which returns url of home.html-->
+
+        {% endblock %}

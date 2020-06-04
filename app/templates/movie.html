@@ -1,16 +1,46 @@
-{% extends 'base.html'%} {% import 'macros.html' as macro%}
+<body style="background-color: black">
+    {% extends 'base.html'%} {% import 'macros.html' as macro%}
 
-<!-- Styles block -->
+    <!-- Styles block -->
 
-{% block styles%} {{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/movie.css')}}"> {% endblock %}
+    {% block styles%} {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/movie.css')}}"> {% endblock %}
 
-<!-- Content block -->
-{% block content %}
-<div class="container">
+    <!-- Content block -->
+    {% block content %}
+    <style>
+        .container {
+            text-align: right;
+            color: rgb(4, 167, 4);
+            padding: 2%;
+        }
+    </style>
 
-    <!-- Poster background -->
-    <div class="row">
+    <div class="container">
+
+        <!-- Poster background -->
+        <div style="float: left;">
+            <img src="{{movie.poster}}" style="height: 500px;">
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 movie-details">
+            <h3>{{ movie.title }}</h3>
+
+            <p class="overview"> {{ movie.overview }}</p>
+
+            <p class="ratings">
+                <b> {{ movie.vote_average }}</b> -
+                <i>{{ movie.vote_count}} votes </i>
+            </p>
+            <a class="ratings" href="/movie/review/new/{{movie.id}}"> Write a new review</a>
+
+
+        </div>
+
+
+    </div>
+
+    <div style="text-align: center; color: white; padding-bottom: 10%;">
 
         <h1>Reviews</h1>
         <hr> {% if reviews %} {{macro.displayReviews(reviews)}} {% else%}
@@ -20,5 +50,6 @@
 
     </div>
 
-</div>
-{% endblock %}
+    </div>
+    {% endblock %}
+</body>
